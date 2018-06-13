@@ -48,7 +48,7 @@ module.exports = ({
 
     async editMessage(rpCode, _id, { content, edited }) {
         const db = (await connection).db(rpCode);
-        await db.collection('messages').updateOne({ _id }, { content, edited });
+        await db.collection('messages').updateOne({ _id: new ObjectID(_id) }, { $set: { content, edited } });
     },
 
 });

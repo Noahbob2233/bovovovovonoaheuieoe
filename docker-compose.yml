@@ -49,6 +49,14 @@ services:
     networks:
       - back-layer
 
+  sql:
+    image: mysql:8.0
+    restart: on-failure
+    volumes:
+      - rpnow_mysql_data:/var/lib/mysql
+    networks:
+      - back-layer
+
 networks:
   front-layer:
   back-layer:
@@ -56,3 +64,4 @@ networks:
 volumes:
   caddy_data:
   db_data:
+  rpnow_mysql_data:

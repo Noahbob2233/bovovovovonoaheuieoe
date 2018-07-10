@@ -15,6 +15,12 @@ services:
     networks:
       - admin-layer
 
+  sql:
+    networks:
+      - admin-layer
+    ports:
+      - "3306:3306"
+
   db_debug:
     image: "mongo-express:latest"
     depends_on:
@@ -23,6 +29,17 @@ services:
       ME_CONFIG_MONGODB_SERVER: db
     ports:
       - "8282:8081"
+    networks:
+      - admin-layer
+
+  sql_debug:
+    image: "adminer"
+    depends_on:
+      - sql
+    environment:
+      ADMINER_DESIGN: "pepa-linha"
+    ports:
+      - "8383:8080"
     networks:
       - admin-layer
 

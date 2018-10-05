@@ -12,6 +12,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "analyze": "source-map-explorer build/static/js/main.*",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -22,5 +23,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "source-map-explorer": "^1.6.0"
+  }
 }

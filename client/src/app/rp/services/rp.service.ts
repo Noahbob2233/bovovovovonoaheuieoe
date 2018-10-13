@@ -151,11 +151,11 @@ export class RpService implements OnDestroy {
       distinctUntilChanged(),
     );
 
-    this.loaded$ = this.rpState.pipe<true>(
+    this.loaded$ = this.rpState.pipe(
       filter(({ connection, error=null }) => connection === 'connected' && !error),
       mapTo(true),
       take(1),
-    );
+    ) as Observable<true>;
 
     this.messages$ = this.rpState.pipe(
       filter(({ msgs=null }) => !!msgs),
